@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang = 'sl'>
+
+    <head>
+        <title>
+            Dohodnina
+        </title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <h1>
+            <b>Dohodnina</b>
+        </h1>
+        <h2>
+            <form action="/izracunaj/" method="POST">
+                Letni dohodek (bruto): <input type="number" step="0.01" name="dohodek">
+                Prispevki: <input type="number" step="0.01" name="prispevki">
+                Akontacija: <input type="number" step="0.01" name="akontacija">
+                <input type="submit" value="Vredu!">
+            </form>
+
+        </h2>
+        <h2>
+            <form action="/izracunaj/" method="POST">
+                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                <label for="vehicle1">Splosna olajsava</label><br>
+                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                <label for="vehicle2">Invalid s 100% telesno okvaro</label><br>
+                
+              </form>
+        </h2>
+
+
+
+
+    </body>
+</html>
