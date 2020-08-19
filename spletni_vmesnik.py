@@ -10,7 +10,9 @@ def zacetna_stran():
 def ena_oseba():
     return bottle.template('ena_oseba.html')
 
-
+@bottle.get('/dve_osebi/')
+def dve_osebi():
+    return bottle.template('dve_osebi.html')
 
 @bottle.get('/izracunaj/')
 def izracunaj():
@@ -41,14 +43,62 @@ def izracunaj():
 
     znesek = round(d.rangiranje(), 2) - akontacija
     if znesek <= 0:
-        izpis = f'Od drzave dobite {abs(znesek)}'
+        izpis = f'Drzava vam je odvedla {abs(znesek)} € preveč'
     else:
-        izpis = f'Dohodnina zanas {znesek}'
+        izpis = f'Dohodnina zanas {znesek} €'
     
     return bottle.template('izpis_ena.html', izpis=izpis)
     
 
+@bottle.get('/optimalec/')
+def za_dva():
+    #skupno stevilo otrok
+    st_otrok = int(bottle.request.query['st_otrok'])
+    #prva oseba
+    sl_olajsave1 = {}
+    dohodek1 = int(bottle.request.query['dohodek1'])
+    prispevki1 = int(bottle.request.query['prispevki1'])
+    akontacija1 = int(bottle.request.query['akontacija1'])
+    try:
+        splosna1 = bool(bottle.request.query['splosna1'])
+    except KeyError:
+        splosna1 = False
+    try:
+        invalidska1 = bool(bottle.request.query['invalidska1'])
+    except KeyError:
+        invalidska1 = False
+    try:
+        dodatno_pok1 = int(bottle.request.query['dodatno_pok1'])
+    except ValueError:
+        dodatno_pok1 = 0
+    sl_olajsave1['splosna'] = splosna1
+    sl_olajsave1['invalidska'] = invalidska1
+    sl_olajsave1['dodatno_pok'] = dodatno_pok1
+    #druga oseba
+    sl_olajsave2 = {}
+    dohodek2 = int(bottle.request.query['dohodek2'])
+    prispevki2 = int(bottle.request.query['prispevki2'])
+    akontacija2 = int(bottle.request.query['akontacija2'])
+    try:
+        splosna2 = bool(bottle.request.query['splosna2'])
+    except KeyError:
+        splosna2 = False
+    try:
+        invalidska2 = bool(bottle.request.query['invalidska2'])
+    except KeyError:
+        invalidska2 = False
+    try:
+        dodatno_pok2 = int(bottle.request.query['dodatno_pok2'])
+    except ValueError:
+        dodatno_pok2 = 0
+    sl_olajsave2['splosna'] = splosna2
+    sl_olajsave2['invalidska'] = invalidska2
+    sl_olajsave2['dodatno_pok'] = dodatno_pok2
 
+    d2 = Dohodnina(dohodek2, prispevki2, sl_olajsave2, st_otrok)
+    d1 = Dohodnina(dohodek1, prispevki1, sl_olajsave1, st_otrok)
+    opt = Dohodnina.optimalec(d1, d2)
 
+    return bottle.template('izpis_dva.html', izpis=opt)
 
 bottle.run(debug=True, reloader=True)
