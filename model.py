@@ -70,8 +70,26 @@ class Dohodnina():
             return 22480  + (osnova - 72000) * 0.5
     
 
-######## funkcije ###################################################################
+    #d1 je dohodnina za 1.osebo d2 pa 2. osebo
+    @staticmethod
+    def optimalec(d1, d2):
+        osnova1 = d1.osnova(False)
+        osnova2 = d2.osnova(False)
+        sl_moznosti = moznosti()
+        skupna_d = {}
+        for n in range(13):
+            ol1 = d1.olajsave_z_otroki(n)
+            ol2 = d2.olajsave_z_otroki(12 - n)
+            o1 = osnova1 - ol1
+            o2 = osnova2 - ol2
+            skupna = d1.rangiranje(o1) + d2.rangiranje(o2)
+            sl_moznosti[n]['prvi'] = d1.rangiranje(o1)
+            sl_moznosti[n]['drugi'] = d2.rangiranje(o2)
+            skupna_d[skupna] = sl_moznosti[n]
+        return min(skupna_d.items()) #vrne (min skupna d, {'1': st_mesecev, '2':st_mesecev}
 
+
+######## funkcije ###################################################################
 
 #naredi slovar z moznostmi kako prijavito otroke
 def moznosti():
@@ -81,17 +99,7 @@ def moznosti():
         sl_moznosti[st_mesecev] = {os1 : st_mesecev, os2 : 12 - st_mesecev}
     return sl_moznosti
 
-#d1 je dohodnina za 1.osebo d2 pa 2. osebo
-def optimalec(d1, d2):
-    osnova1 = d1.osnova(False)
-    osnova2 = d2.osnova(False)
-    sl_moznosti = moznosti()
-    skupna_d = {}
-    for n in range(13):
-        ol1 = d1.olajsave_z_otroki(n)
-        ol2 = d2.olajsave_z_otroki(12 - n)
-        o1 = osnova1 - ol1
-        o2 = osnova2 - ol2
-        skupna = d1.rangiranje(o1) + d2.rangiranje(o2)
-        skupna_d[skupna] = sl_moznosti[n]
-    return min(skupna_d.items()) #vrne (min skupna d, {'1': st_mesecev, '2':st_mesecev}
+
+def prikaz(akontacija1, akontacija2, opt):
+    pass
+
