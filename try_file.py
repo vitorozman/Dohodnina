@@ -1,7 +1,6 @@
-from new_model import * 
+from model import * 
 
-sez = na_otroka
-m = moznosti()
+
 p1 = 5000
 sl = {
     'splosna' : True,
@@ -17,4 +16,4 @@ pr2 = p2 * 0.22
 d1 = Dohodnina(p1, pr1, sl, st)
 d2 = Dohodnina(p2, pr2, sl, st)
 
-print(optimalec(d1, d2))
+print(Dohodnina.optimalec(d1, d2))

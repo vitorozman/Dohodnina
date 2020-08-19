@@ -6,42 +6,44 @@
     <b>Dohodnina</b>
 </h1>
 <h2>
-    <table>
+    <table border="1">
 
         <form action="/izracunaj/">
             <tr>
                 <td>
-                Letni dohodek (bruto): <input type="number" step="0.01" name="dohodek"><br>
-                Prispevki: <input type="number" step="0.01" name="prispevki"><br>
-                Akontacija: <input type="number" step="0.01" name="akontacija"><br>
-                Stevilo otrok: <input type="number" min="0" name="st_otrok"><br>
-                
+                    Letni dohodek (bruto): <input type="number" step="0.01" name="dohodek"><br>
+                    Prispevki: <input type="number" step="0.01" name="prispevki"><br>
+                    Akontacija: <input type="number" step="0.01" name="akontacija"><br>
+                    Stevilo otrok: <input type="number" min="0" name="st_otrok"><br>
+                </td>
+            </tr>
+            <tr>
                 <!-- olajsave -->
-                
-                <input type="checkbox" name="splosna" value="True">
-                <label for="splosna">Splosna olajsava</label><br>
-                <input type="checkbox" name="invalidska" value="True">
-                <label for="invalidska">Invalid s 100% telesno okvaro</label><br>
-                
-                <input type="checkbox" id="dodatno_pok" name="interest" value="dodatno_pok">
-                <label for="dodatno_pok">Olajsava za doddatno pokojninsko zavarovanje</label>
-                <input type="number" step="0.01" id="otherValue" name="dodatno_pok"><br>
+                <td>
+                    <input type="checkbox" name="splosna" value="True">
+                    <label for="splosna">Splosna olajsava</label><br>
+                    <input type="checkbox" name="invalidska" value="True">
+                    <label for="invalidska">Invalid s 100% telesno okvaro</label><br>
+                    
+                    <input type="checkbox" id="dodatno_pok" name="interest" value="dodatno_pok">
+                    <label for="dodatno_pok">Olajsava za doddatno pokojninsko zavarovanje</label>
+                    <input type="number" step="0.01" id="otherValue" name="dodatno_pok"><br>
 
-                <script>
-                    var otherCheckbox = document.querySelector('input[value="dodatno_pok"]');
-                    var otherText = document.querySelector('input[id="otherValue"]');
-                    otherText.style.visibility = 'hidden';
-
-                    otherCheckbox.addEventListener('change', () => {
-                    if(otherCheckbox.checked) {
-                        otherText.style.visibility = 'visible';
-                        otherText.value = '';
-                    } else {
+                    <script>
+                        var otherCheckbox = document.querySelector('input[value="dodatno_pok"]');
+                        var otherText = document.querySelector('input[id="otherValue"]');
                         otherText.style.visibility = 'hidden';
-                    }
-                    });
-                </script>
-                <input type="submit" value="Vredu!">
+
+                        otherCheckbox.addEventListener('change', () => {
+                        if(otherCheckbox.checked) {
+                            otherText.style.visibility = 'visible';
+                            otherText.value = '';
+                        } else {
+                            otherText.style.visibility = 'hidden';
+                        }
+                        });
+                    </script>
+                    <input type="submit" value="Vredu!">
                 </td>
             </tr>
         </form>
