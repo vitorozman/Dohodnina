@@ -17,9 +17,9 @@ def dve_osebi():
 @bottle.get('/izracunaj/')
 def izracunaj():
     sl_olajsave = {}
-    dohodek = int(bottle.request.query['dohodek'])
-    prispevki = int(bottle.request.query['prispevki'])
-    akontacija = int(bottle.request.query['akontacija'])
+    dohodek = float(bottle.request.query['dohodek'])
+    prispevki = float(bottle.request.query['prispevki'])
+    akontacija = float(bottle.request.query['akontacija'])
 
     st_otrok = int(bottle.request.query['st_otrok'])
 
@@ -32,7 +32,7 @@ def izracunaj():
     except KeyError:
         invalidska = False
     try:
-        dodatno_pok = int(bottle.request.query['dodatno_pok'])
+        dodatno_pok = float(bottle.request.query['dodatno_pok'])
     except ValueError:
         dodatno_pok = 0
     sl_olajsave['splosna'] = splosna
@@ -56,9 +56,9 @@ def za_dva():
     st_otrok = int(bottle.request.query['st_otrok'])
     #prva oseba
     sl_olajsave1 = {}
-    dohodek1 = int(bottle.request.query['dohodek1'])
-    prispevki1 = int(bottle.request.query['prispevki1'])
-    akontacija1 = int(bottle.request.query['akontacija1'])
+    dohodek1 = float(bottle.request.query['dohodek1'])
+    prispevki1 = float(bottle.request.query['prispevki1'])
+    akontacija1 = float(bottle.request.query['akontacija1'])
     try:
         splosna1 = bool(bottle.request.query['splosna1'])
     except KeyError:
@@ -68,7 +68,7 @@ def za_dva():
     except KeyError:
         invalidska1 = False
     try:
-        dodatno_pok1 = int(bottle.request.query['dodatno_pok1'])
+        dodatno_pok1 = float(bottle.request.query['dodatno_pok1'])
     except ValueError:
         dodatno_pok1 = 0
     sl_olajsave1['splosna'] = splosna1
@@ -76,9 +76,9 @@ def za_dva():
     sl_olajsave1['dodatno_pok'] = dodatno_pok1
     #druga oseba
     sl_olajsave2 = {}
-    dohodek2 = int(bottle.request.query['dohodek2'])
-    prispevki2 = int(bottle.request.query['prispevki2'])
-    akontacija2 = int(bottle.request.query['akontacija2'])
+    dohodek2 = float(bottle.request.query['dohodek2'])
+    prispevki2 = float(bottle.request.query['prispevki2'])
+    akontacija2 = float(bottle.request.query['akontacija2'])
     try:
         splosna2 = bool(bottle.request.query['splosna2'])
     except KeyError:
@@ -88,17 +88,20 @@ def za_dva():
     except KeyError:
         invalidska2 = False
     try:
-        dodatno_pok2 = int(bottle.request.query['dodatno_pok2'])
+        dodatno_pok2 = float(bottle.request.query['dodatno_pok2'])
     except ValueError:
         dodatno_pok2 = 0
     sl_olajsave2['splosna'] = splosna2
     sl_olajsave2['invalidska'] = invalidska2
     sl_olajsave2['dodatno_pok'] = dodatno_pok2
 
-    d2 = Dohodnina(dohodek2, prispevki2, sl_olajsave2, st_otrok)
     d1 = Dohodnina(dohodek1, prispevki1, sl_olajsave1, st_otrok)
-    opt = Dohodnina.optimalec(d1, d2)
+    d2 = Dohodnina(dohodek2, prispevki2, sl_olajsave2, st_otrok)
+    _, opt = Dohodnina.optimalec(d1, d2)
 
-    return bottle.template('izpis_dva.html', izpis=opt)
+    
+            
+
+    return bottle.template('izpis_dva.html', opt=opt, akontacija1=akontacija1, akontacija2=akontacija2)
 
 bottle.run(debug=True, reloader=True)

@@ -1,7 +1,33 @@
 % import bottle
 % rebase('base.html')
 
-
-<p>
-    ipris je {{izpis}}
-</p>
+<table border="1">
+    <tr>
+        <p>
+            <td>
+                %strosek1 = round(opt['prvi'] - akontacija1, 2)
+                %strosek2 = round(opt['drugi'] - akontacija2, 2)
+                %if strosek1 <= 0:
+                %   niz1 = f'Vračilo {abs(strosek1)}€'
+                %else:
+                %   niz1 = f'Doplačilo {strosek1}€'
+                %end
+                {{niz1}}
+                <br>
+                Otroka/e naj prijavi za {{opt['1']}} mesecev.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                %if strosek2 <= 0:
+                %   niz2 = f'Vračilo {abs(strosek2)}€'
+                %else:
+                %   niz2 = f'Doplačilo {strosek2}€'
+                {{niz2}}
+                %end
+                <br>
+                Otroka/e naj prijavi za {{opt['2']}} mesecev.
+            </td>
+        </p>
+    </tr>
+</table>
