@@ -2,32 +2,41 @@
 % rebase('base.html')
 
 
-<h1>
-    <b>Dohodnina</b>
-</h1>
-<h2>
+
     <table border="1">
 
         <form action="/izracunaj/">
-            <tr>
-                <td>
-                    Letni dohodek (bruto): <input type="number" step="0.01" name="dohodek"><br>
-                    Prispevki: <input type="number" step="0.01" name="prispevki"><br>
-                    Akontacija: <input type="number" step="0.01" name="akontacija"><br>
-                    Stevilo otrok: <input type="number" min="0" name="st_otrok"><br>
+            <tr class="opredelitev">
+                <td class="opredelitev">
+                    <h1>
+                        <b>Dohodnina</b>
+                    </h1>
                 </td>
             </tr>
             <tr>
-                <!-- olajsave -->
                 <td>
-                    <input type="checkbox" name="splosna" value="True">
-                    <label for="splosna">Splosna olajsava</label><br>
+                    <b>Letni dohodek </b>(bruto)<b>:</b> <input type="number" step="0.01" required name="dohodek">€<br>
+                    <b>Prispevki: </b><input type="number" step="0.01" required name="prispevki">€<br>
+                    <b>Akontacija: </b><input type="number" step="0.01" required name="akontacija">€<br>
+                </td>
+            </tr>
+            <tr>
+                <tr class="opredelitev">
+                    <td class="opredelitev">
+                        Olajšave:
+                    </td>
+                </tr>
+                <!-- olajsave -->
+                <td class="ena1">
+                    Število otrok: <input type="number" required min="0" name="st_otrok"><br>
+                    <input type="checkbox" required name="splosna" value="True">
+                    <label for="splosna">Splošna olajšava</label><br>
                     <input type="checkbox" name="invalidska" value="True">
                     <label for="invalidska">Invalid s 100% telesno okvaro</label><br>
                     
                     <input type="checkbox" id="dodatno_pok" name="interest" value="dodatno_pok">
-                    <label for="dodatno_pok">Olajsava za doddatno pokojninsko zavarovanje</label>
-                    <input type="number" step="0.01" id="otherValue" name="dodatno_pok"><br>
+                    <label for="dodatno_pok">Olajšava za doddatno pokojninsko zavarovanje</label>
+                    <input type="number" step="0.01" width="1cm" placeholder="€" id="otherValue" name="dodatno_pok"><br>
 
                     <script>
                         var otherCheckbox = document.querySelector('input[value="dodatno_pok"]');
@@ -43,15 +52,44 @@
                         }
                         });
                     </script>
-                    <input type="submit" value="Vredu!">
+                    <input type="submit" id="gumb" value="Izračunaj!">
                 </td>
             </tr>
         </form>
     </table>
 
-</h2>
 
 
 
+<style>
+    body {
+        font-size: large;
+    }
+    td {
+        padding: 4mm;
+        width: 14cm;
+        height: 6;
+        text-align: left;
+    }
+    input {
+        width: 2cm;
+
+    }
+    label {
+        margin: auto;
+        
+    }
+    .gumb{
+        text-align: center;
+    }
+    .ena1 {
+        text-align: left;
+        padding-left: 3mm;
+    }
+    .opredelitev {
+        text-align: center;
+        height: 2mm;
+    }
+</style>
 
    
