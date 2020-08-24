@@ -98,8 +98,3 @@ def moznosti():
     for st_mesecev in range(13):
         sl_moznosti[st_mesecev] = {os1 : st_mesecev, os2 : 12 - st_mesecev}
     return sl_moznosti
-
-
-def prikaz(akontacija1, akontacija2, opt):
-    pass
-
