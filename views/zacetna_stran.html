@@ -1,21 +1,15 @@
 % import bottle
 % rebase('base.html')
 
-
-<h1>
-    <b>Dohodnina</b>
-</h1>
 <h2>
-    Izberite moznost
+    Izberite možnost
 </h2>
-
-
 <table border="1">
     <colgroup align="center"></colgroup>
     <tr>
         <td>
             <p>
-                Rcunate dohodnino za eno osebo
+                Ena oseba
             </p>
             <form action="/ena_oseba/" >
                 <button type="submit" value="1">
@@ -28,7 +22,7 @@
         </td>
         <td>
             <p>
-                Rcunate dohodnino za dve osebi
+                Dve osebi + otroci
             </p>
             <form action="/dve_osebi/">
                 <button type="submit" value="2">
@@ -40,3 +34,21 @@
         </td>
     </tr>
 </table>
+
+<style>
+    td {
+        padding: 5mm;
+        width: 4cm;
+        height: 4cm;
+        text-align: center;
+    }
+    h2 {
+        text-align: center;
+    }
+    body {
+        margin-top: 5cm;
+    }
+    button {
+        text-align: center;
+    }
+</style>
