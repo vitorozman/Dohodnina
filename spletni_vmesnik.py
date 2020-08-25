@@ -3,7 +3,7 @@ from model import *
 
 @bottle.get('/')
 def vstop():
-    return bottle.template('opis.html')
+    return bottle.template('osnovna.html')
 
 @bottle.get('/zacetna_stran/')
 def zacetna_stran():
@@ -45,11 +45,11 @@ def izracunaj():
     d = Dohodnina(dohodek, prispevki, sl_olajsave, st_otrok)
 
     olajsave = round(d.olajsave_brez_otrok() + d.olajsave_z_otroki(), 2)
-    znesek = round(d.rangiranje(), 2) - akontacija
+    znesek = round(d.rangiranje() - akontacija, 2)
     if znesek <= 0:
         niz = f'Vračilo zanša {abs(znesek)} €'
     else:
-        niz = f'Doplačilo zanša <b>{znesek}</b> €'
+        niz = f'Doplačilo zanša {znesek} €'
     
     return bottle.template('izpis_ena.html', niz=niz, olajsave=olajsave)
     
