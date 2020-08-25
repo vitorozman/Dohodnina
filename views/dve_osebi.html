@@ -1,99 +1,102 @@
 % import bottle
 % rebase('base.html')
-<h1>
-    Optimalec dohodnine
-</h1>
 
 
+<table border="1">
+    <form action="/optimalec/">
 
-<h3>
-    <table border="1">
+        <tr>
+            <td colspan="2" class="dvojna">
+                <h1>
+                    Optimalec dohodnine
+                </h1>
+            </td>
+        </tr>
 
-        <form action="/optimalec/">
-            <tr>
-                <td>
-                    <h2>
-                        Prva oseba
-                    </h2>
-                </td>
-                <td>
-                    <h2> 
-                        Druga oseba
-                    </h2>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Letni dohodek (bruto): <input type="number" step="0.01" name="dohodek1"><br>
-                    Prispevki: <input type="number" step="0.01" name="prispevki1"><br>
-                    Akontacija: <input type="number" step="0.01" name="akontacija1"><br>
-                </td>
-                <td>
-                    Letni dohodek (bruto): <input type="number" step="0.01" name="dohodek2"><br>
-                    Prispevki: <input type="number" step="0.01" name="prispevki2"><br>
-                    Akontacija: <input type="number" step="0.01" name="akontacija2"><br>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" name="splosna1" value="True">
-                    <label for="splosna">Splosna olajsava</label><br>
-                    <input type="checkbox" name="invalidska1" value="True">
-                    <label for="invalidska">Invalid s 100% telesno okvaro</label><br>
-                    
-                    <input type="checkbox" id="dodatno_pok1" name="interest1" value="dodatno_pok1">
-                    <label for="dodatno_pok1">Olajsava za doddatno pokojninsko zavarovanje</label>
-                    <input type="number" step="0.01" id="1" name="dodatno_pok1"><br>
-                    <script>
-                        var otherCheckbox = document.querySelector('input[value="dodatno_pok1"]');
-                        var otherText = document.querySelector('input[id="1"]');
-                        otherText.style.visibility = 'hidden';
+        <tr>
+            <td>
+                <h2>
+                    Prva oseba
+                </h2>
+            </td>
+            <td>
+                <h2> 
+                    Druga oseba
+                </h2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>Letni dohodek* </b>(bruto)<b>: </b><input type="number" required step="0.01" name="dohodek1"> €<br>
+                <b>Prispevki*:</b> <input type="number" required step="0.01" name="prispevki1"> €<br>
+                <b>Akontacija*:</b> <input type="number" required step="0.01" name="akontacija1"> €<br>
+            </td>
+            <td>
+                <b>Letni dohodek* </b>(bruto)<b>: </b><input type="number" required step="0.01" name="dohodek2"> €<br>
+                <b>Prispevki*: </b><input type="number" required step="0.01" name="prispevki2"> €<br>
+                <b>Akontacija*: </b><input type="number" required step="0.01" name="akontacija2"> €<br>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="dvojna">
+                Olajšave:
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="splosna1" required value="True">
+                <label for="splosna">Splosna olajsava*</label><br>
+                <input type="checkbox" name="invalidska1" value="True">
+                <label for="invalidska">Invalid s 100% telesno okvaro</label><br>
+                
+                <input type="checkbox" id="dodatno_pok1" name="interest1" value="dodatno_pok1">
+                <label for="dodatno_pok1">Olajsava za doddatno pokojninsko zavarovanje</label>
+                <input type="number" step="0.01" id="1" name="dodatno_pok1"> €<br>
+                
+            </td>
+            <td>
+                <input type="checkbox" name="splosna2" required value="True">
+                <label for="splosna">Splosna olajsava*</label><br>
+                <input type="checkbox" name="invalidska2" value="True">
+                <label for="invalidska">Invalid s 100% telesno okvaro</label><br>
+                
+                <input type="checkbox" id="dodatno_pok2" name="interest2" value="dodatno_pok2">
+                <label for="dodatno_pok2">Olajsava za doddatno pokojninsko zavarovanje</label>
+                <input type="number" step="0.01" id="2" name="dodatno_pok2"> €<br>
+                
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="dvojna">
+                Skupno število vzdrževanih otrok: <input type="number" required step="0.01" name="st_otrok"><br>
+                <br>
+                <input type="submit" class="gumb" value="Izračuna!">
+            </td>
+        </tr>
+    </form>
 
-                        otherCheckbox.addEventListener('change', () => {
-                        if(otherCheckbox.checked) {
-                            otherText.style.visibility = 'visible';
-                            otherText.value = '';
-                        } else {
-                            otherText.style.visibility = 'hidden';
-                        }
-                        });
-                    </script>
-                </td>
-                <td>
-                    <input type="checkbox" name="splosna2" value="True">
-                    <label for="splosna">Splosna olajsava</label><br>
-                    <input type="checkbox" name="invalidska2" value="True">
-                    <label for="invalidska">Invalid s 100% telesno okvaro</label><br>
-                    
-                    <input type="checkbox" id="dodatno_pok2" name="interest2" value="dodatno_pok2">
-                    <label for="dodatno_pok2">Olajsava za doddatno pokojninsko zavarovanje</label>
-                    <input type="number" step="0.01" id="2" name="dodatno_pok2"><br>
+</table>
 
-                    <script>
-                        var otherCheckbox = document.querySelector('input[value="dodatno_pok2"]');
-                        var otherText = document.querySelector('input[id="2"]');
-                        otherText.style.visibility = 'hidden';
+<style>
+    body {
+        font-size: large;
+    }
+    td {
+        padding: 4mm;
+        text-align: left;
+    }
+    input {
+        width: 2cm;
+    }¸
+    label {
+        margin: auto;
+    }
+    .dvojna {
+        text-align: center;
+    }
+    .gumb {
+        text-align: center;
+        position: bottom;
 
-                        otherCheckbox.addEventListener('change', () => {
-                        if(otherCheckbox.checked) {
-                            otherText.style.visibility = 'visible';
-                            otherText.value = '';
-                        } else {
-                            otherText.style.visibility = 'hidden';
-                        }
-                        });
-                    </script>
-                    
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    Skupno število otrok: <input type="number" step="0.01" name="st_otrok"><br>
-                    <input type="submit" value="Vredu!">
-                </td>
-            </tr>
-
-
-        </form>
-    </table>
-</h3>
+    }
+</style>
