@@ -103,9 +103,6 @@ def za_dva():
     d2 = Dohodnina(dohodek2, prispevki2, sl_olajsave2, st_otrok)
     _, opt = Dohodnina.optimalec(d1, d2)
 
-    
-            
-
     return bottle.template('izpis_dva.html', opt=opt, akontacija1=akontacija1, akontacija2=akontacija2)
 
 bottle.run(debug=True, reloader=True)

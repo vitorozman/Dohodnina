@@ -46,7 +46,7 @@ class Dohodnina():
                 olajsava += na_otroka[n]
         return olajsava * st_mesecev
     
-    #dolocilec = {true, false} doloci ali je osnova z otroki al i ne
+    #dolocilec = {true, false} doloci ali je osnova z otroki ali ne
     def osnova(self, dolocilec=True):
         if dolocilec:
             return self.dohodek - self.prispevki - self.olajsave_brez_otrok() - self.olajsave_z_otroki()
@@ -73,6 +73,7 @@ class Dohodnina():
     #d1 je dohodnina za 1.osebo d2 pa 2. osebo
     @staticmethod
     def optimalec(d1, d2):
+        #dobimo osnovo brez olasave otrok
         osnova1 = d1.osnova(False)
         osnova2 = d2.osnova(False)
         sl_moznosti = moznosti()
@@ -82,6 +83,7 @@ class Dohodnina():
             ol2 = d2.olajsave_z_otroki(12 - n)
             o1 = osnova1 - ol1
             o2 = osnova2 - ol2
+            #skupno, ker iscemo skupni optimum
             skupna = d1.rangiranje(o1) + d2.rangiranje(o2)
             sl_moznosti[n]['prvi'] = d1.rangiranje(o1)
             sl_moznosti[n]['drugi'] = d2.rangiranje(o2)
