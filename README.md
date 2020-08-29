@@ -28,7 +28,7 @@ Opombe:
 ### Zaženi program
 <ol>
     <li>Kolniraj repozitorij</li>
-    <li>Poženi spletni_vmesnik.py z ukazom v terminalu (pot kjer se nahaja repozitorij <p font-famely='Courier New'>python spletni_vmesnik.py</p></li>
+    <li>Poženi spletni_vmesnik.py z ukazom v terminalu (pot kjer se nahaja repozitorij/ <b>$ python spletni_vmesnik.py</b>)</li>
     <li>Nato odprite <a href='http://127.0.0.1:8080/'>naslov</a></li>
 </ol>
 
