@@ -13,7 +13,7 @@ Informativni podatki:
 <ul>
     <li>Letni dohodek (bruto) ... ves dohodek ki ga oseba zasluži čez celo leto</li>
     <li>Prispevki ... to so npr.: prispevek za pokojninsko in invalidsko zavarovanje, prispevek za zdravstveno varstvo,..</li>
-    <li>Akontacija ... skupni znesek, ki ga med med letom država odvede za dohonino</li>
+    <li>Akontacija ... skupni znesek, ki je med letom odveden za plačilo dohodnine</li>
     <li>Splošna olajšava ... prizna se vsakemu rezidentu Slovenije</li>
     <li>Invalid s 100% telesno okvaro ... osebna olajšava</li>
     <li>Oljašav za prostovoljno dodatno pokojninsko zavarovanje ... znesek, ki ga namenite za dodatno pokojninsko zavarovanje</li>
@@ -28,8 +28,8 @@ Opombe:
 ### Zaženi program
 <ol>
     <li>Kolniraj repozitorij</li>
-    <li>Poženi spletni_vmesnik.py z ukazom v terminalu (pot kjer se nahaja repozitorij 'python spletni_vmesnik.py')</li>
-    <li>Nato odprite [naslov](http://127.0.0.1:8080/)</li>
+    <li>Poženi spletni_vmesnik.py z ukazom v terminalu (pot kjer se nahaja repozitorij <p font-famely='Courier New'>python spletni_vmesnik.py</p></li>
+    <li>Nato odprite <a href='http://127.0.0.1:8080/'>naslov</a></li>
 </ol>
 
 
