@@ -1,12 +1,16 @@
 # Dohodnina
 
+## Moj projekt pri predmetu Uvod v programiranje
+
 Program je namenjen za informativni izračun dohodnine za leto 2020.<br>
 
-Na izbiro imate klasičen izračin in izračun za dve osebi, ki vam omogoča skupno prijavo otrok tako da dobite odgovor kako pjaviti otroke, da bo skupna dohodnina čijm nižja.<br>
-Oseba ob koncu leta dobi izpis dohodnine za preteklo leto, na katerem so zneski: bruto letni dohodek, prispevki, akontacija. Te podatke vnesite v program da dobite znesek ki ga morate še plačati ali pa dobite vračilo (če je akontacija, ki ste jo že plačali večja od zneska dohodnine)
+Na izbiro imate možnost izračuna dohodnine za eno ali za dve osebi. Pri izračunu dohodnine za dve osebi vam program vrne optimalno prijavo otrok, tako da je skupno plačilo dohodnine najnižje.<br>
+
+Oseba ob koncu leta dobi izpis dohodnine za preteklo leto, na katerem so zneski: bruto letni dohodek, prispevki, akontacija, ter ostale možne olajšave. Te podatke vnesite v program, ki vam izračuna potrebno doplačilo dohodnine, oziroma vračilo plačane akontacije dohodnine.
 <br>
-<ul>
+
 Informativni podatki:
+<ul>
     <li>Letni dohodek (bruto) ... ves dohodek ki ga oseba zasluži čez celo leto</li>
     <li>Prispevki ... to so npr.: prispevek za pokojninsko in invalidsko zavarovanje, prispevek za zdravstveno varstvo,..</li>
     <li>Akontacija ... skupni znesek, ki ga med med letom država odvede za dohonino</li>
@@ -14,5 +18,18 @@ Informativni podatki:
     <li>Invalid s 100% telesno okvaro ... osebna olajšava</li>
     <li>Oljašav za prostovoljno dodatno pokojninsko zavarovanje ... znesek, ki ga namenite za dodatno pokojninsko zavarovanje</li>
 </ul>
+
+Opombe: 
+<ul>
+    <li>Za lažje potek vnosa so v placeholder-jih zneski, ki bi jih vnesla oseba z povprečnim letnim dohodkom (prispevki so 22,1% bruto letnega dohodka)</li>
+    <li>Podatki za izračun dohodnine, so pridobljeni iz Lestvice_za_leto_2020.docx, ki je v mapi Datoteke in gradiva za štidente 3.letnika Ekonomske fakultete</li>
+</ul>
+
+### Zaženi program
+<ol>
+    <li>Kolniraj repozitorij</li>
+    <li>Poženi spletni_vmesnik.py z ukazom v terminalu (pot kjer se nahaja repozitorij 'python spletni_vmesnik.py')</li>
+    <li>Nato odprite [naslov](http://127.0.0.1:8080/)</li>
+</ol>
 
 
