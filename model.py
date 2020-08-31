@@ -1,30 +1,31 @@
 sl_olajsave = {
-    'splosna' : False,
-    'invalidska' : False,
-    'dodatno_pok' : 0
-    }
+    'splosna': False,
+    'invalidska': False,
+    'dodatno_pok': 0
+}
 
 na_otroka = {
-        0 : 0,
-        1 : 203.08,
-        2 : 220.77,
-        3 : 368.21,
-        4 : 515.65,
-        5 : 663.09
-        }
+    0: 0,
+    1: 203.08,
+    2: 220.77,
+    3: 368.21,
+    4: 515.65,
+    5: 663.09
+}
+
 
 class Dohodnina():
 
     def __init__(self, dohodek, prispevki, sl_olajsave, st_otrok):
-        self.dohodek = dohodek #letni dohodek
+        self.dohodek = dohodek  # letni dohodek
         self.prispevki = prispevki
         self.sl_olajsave = sl_olajsave
         self.st_otrok = st_otrok
 
-    #vrne znesek za olajsave brez posebne olajsave(otroci, clani)
+    # vrne znesek za olajsave brez posebne olajsave(otroci, clani)
     def olajsave_brez_otrok(self):
         olajsava = 0
-        if self.sl_olajsave['splosna']: 
+        if self.sl_olajsave['splosna']:
             if self.dohodek <= 13316.83:
                 olajsava += 3500 + 18700.38 - (1.40427 * self.dohodek)
             else:
@@ -32,10 +33,12 @@ class Dohodnina():
         if self.sl_olajsave['invalidska']:
             olajsava += 17658.84
         if self.sl_olajsave['dodatno_pok'] > 0:
-            olajsava += min(2819.09, self.dohodek * 0.05844, self.sl_olajsave['dodatno_pok'])
+            olajsava += min(2819.09, self.dohodek * 0.05844,
+                            self.sl_olajsave['dodatno_pok'])
         return olajsava
 
-    def olajsave_z_otroki(self, st_mesecev=12):#za eno osebo mora biti st mesecev = 12
+    # za eno osebo mora biti st mesecev = 12
+    def olajsave_z_otroki(self, st_mesecev=12):
         olajsava = 0
         petplus = na_otroka[5]
         for n in range(self.st_otrok + 1):
@@ -45,16 +48,16 @@ class Dohodnina():
             else:
                 olajsava += na_otroka[n]
         return olajsava * st_mesecev
-    
-    #dolocilec = {true, false} doloci ali je osnova z otroki ali ne
+
+    # dolocilec = {true, false} doloci ali je osnova z otroki ali ne
     def osnova(self, dolocilec=True):
         if dolocilec:
             return self.dohodek - self.prispevki - self.olajsave_brez_otrok() - self.olajsave_z_otroki()
         else:
             return self.dohodek - self.prispevki - self.olajsave_brez_otrok()
 
+    # vrne dohodnino glede na rang v katerem si
 
-    #vrne dohodnino glede na rang v katerem si
     def rangiranje(self, osnova=0):
         if osnova == 0:
             osnova = self.osnova()
@@ -67,13 +70,13 @@ class Dohodnina():
         elif 25000 < osnova <= 72000:
             return 13900 + (osnova - 4166.67) * 0.39
         else:
-            return 22480  + (osnova - 72000) * 0.5
-    
+            return 22480 + (osnova - 72000) * 0.5
 
-    #d1 je dohodnina za 1.osebo d2 pa 2. osebo
+    # d1 je dohodnina za 1.osebo d2 pa 2. osebo
+
     @staticmethod
     def optimalec(d1, d2):
-        #dobimo osnovo brez olasave otrok
+        # dobimo osnovo brez olasave otrok
         osnova1 = d1.osnova(False)
         osnova2 = d2.osnova(False)
         sl_moznosti = moznosti()
@@ -83,20 +86,21 @@ class Dohodnina():
             ol2 = d2.olajsave_z_otroki(12 - n)
             o1 = osnova1 - ol1
             o2 = osnova2 - ol2
-            #skupno, ker iscemo skupni optimum
+            # skupno, ker iscemo skupni optimum
             skupna = d1.rangiranje(o1) + d2.rangiranje(o2)
             sl_moznosti[n]['prvi'] = d1.rangiranje(o1)
             sl_moznosti[n]['drugi'] = d2.rangiranje(o2)
             skupna_d[skupna] = sl_moznosti[n]
-        return min(skupna_d.items()) #vrne (min skupna d, {'1': st_mesecev, '2':st_mesecev}
+        # vrne (min skupna d, {'1': st_mesecev, '2':st_mesecev}
+        return min(skupna_d.items())
 
 
 ######## funkcije ###################################################################
 
-#naredi slovar z moznostmi kako prijavito otroke
+# naredi slovar z moznostmi kako prijavito otroke
 def moznosti():
     sl_moznosti = {}
     os1, os2 = '1', '2'
     for st_mesecev in range(13):
-        sl_moznosti[st_mesecev] = {os1 : st_mesecev, os2 : 12 - st_mesecev}
+        sl_moznosti[st_mesecev] = {os1: st_mesecev, os2: 12 - st_mesecev}
     return sl_moznosti

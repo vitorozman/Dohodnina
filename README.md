@@ -6,7 +6,7 @@ Program je namenjen za informativni izračun dohodnine za leto 2020.<br>
 
 Na izbiro imate možnost izračuna dohodnine za eno ali za dve osebi. Pri izračunu dohodnine za dve osebi vam program vrne optimalno prijavo otrok, tako da je skupno plačilo dohodnine najnižje.<br>
 
-Oseba ob koncu leta dobi izpis dohodnine za preteklo leto, na katerem so zneski: bruto letni dohodek, prispevki, akontacija, ter ostale možne olajšave. Te podatke vnesite v program, ki vam izračuna potrebno doplačilo dohodnine, oziroma vračilo plačane akontacije dohodnine.
+Oseba ob koncu leta dobi izpis dohodnine za preteklo leto, na katerem so zneski: bruto letni dohodek, prispevki, akontacija, ter ostale možne olajšave. Te podatke vnesite v program, ki vam izračuna potrebno doplačilo dohodnine oziroma vračilo plačane akontacije dohodnine.
 <br>
 
 Informativni podatki:
@@ -27,9 +27,9 @@ Opombe:
 
 ### Zaženi program
 <ol>
-    <li>Kolniraj repozitorij</li>
-    <li>Poženi spletni_vmesnik.py z ukazom v terminalu (pot kjer se nahaja repozitorij/ <b>$ python spletni_vmesnik.py</b>)</li>
-    <li>Nato odprite <a href='http://127.0.0.1:8080/'>naslov</a></li>
+    <li>Kolnirajte repozitorij</li>
+    <li>Poženite spletni_vmesnik.py z ukazom v terminalu (pot kjer se nahaja repozitorij/ <b>$ python spletni_vmesnik.py</b>)</li>
+    <li>Odprite <a href='http://127.0.0.1:8080/'>naslov</a></li>
 </ol>
 
 

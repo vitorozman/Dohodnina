@@ -20,26 +20,18 @@
         <td>
             %strosek1 = round(opt['prvi'] - akontacija1, 2)
             %strosek2 = round(opt['drugi'] - akontacija2, 2)
-            %if strosek1 <= 0:
-            %   niz1 = f'Vračilo znaša {abs(strosek1)} €'
-            %else:
-            %   niz1 = f'Doplačilo znaša {strosek1} €'
-            %end
-            <b>{{niz1}}</b>
-            <br>
-            <br>
-            Otroka/e naj prijavi za <b>{{opt['1']}}</b> mesecev.
+            %if strosek1 <= 0: % niz1=f'Vračilo znaša {abs(strosek1)} €' %else: % niz1=f'Doplačilo znaša {strosek1} €'
+                %end <b>{{niz1}}</b>
+                <br>
+                <br>
+                Otroka/e naj prijavi za <b>{{opt['1']}}</b> mesecev.
         </td>
         <td>
-            %if strosek2 <= 0:
-            %   niz2 = f'Vračilo zanša {abs(strosek2)} €'
-            %else:
-            %   niz2 = f'Doplačilo znaša {strosek2} €'
-            %end
-            <b>{{niz2}}</b>
-            <br>
-            <br>
-            Otroka/e naj prijavi za <b>{{opt['2']}}</b> mesecev.
+            %if strosek2 <= 0: % niz2=f'Vračilo zanša {abs(strosek2)} €' %else: % niz2=f'Doplačilo znaša {strosek2} €'
+                %end <b>{{niz2}}</b>
+                <br>
+                <br>
+                Otroka/e naj prijavi za <b>{{opt['2']}}</b> mesecev.
         </td>
     </tr>
 </table>
@@ -52,17 +44,20 @@
 </form>
 
 <style>
-    body{
+    body {
         text-align: center;
     }
-    table{
+
+    table {
         width: 20cm;
         height: 8cm;
     }
+
     button {
         margin-top: 1cm;
     }
-    #oseba{
+
+    #oseba {
         font-size: larger;
     }
 </style>
